@@ -46,7 +46,8 @@ def sendwishes(x,event="Birthday"):
 def fn(curday,curmonth):
     mydb=mysql.connector.connect(
         host="localhost",
-        user="root",
+        user="##########",
+        password='##############',
         database="mydatabase")
     myc=mydb.cursor()
     sql=("SELECT name_as_per_whatsapp from birthdays where DAY=%s and MONTH=%s")
@@ -98,7 +99,8 @@ myc.execute("CREATE schema mydatabase")
 #using the database/schema mydatabase
 mydb=mysql.connector.connect(
     host="localhost",
-    user="root",
+    user="########",
+    password='##############'
     database="mydatabase")
 myc=mydb.cursor()
 s='''Create table if not exists birthdays
@@ -115,7 +117,8 @@ myc.execute(s,multi=True)
 
 mydb=mysql.connector.connect(
     host="localhost",
-    user="root",
+    user="########",
+    password='##############'
     database="mydatabase")
 myc=mydb.cursor()
 #multi=True when multiple queries in s
