@@ -47,7 +47,7 @@ def fn(curday,curmonth):
     mydb=mysql.connector.connect(
         host="localhost",
         user="##########",
-        password='##############',
+        passwd='##############',
         database="mydatabase")
     myc=mydb.cursor()
     sql=("SELECT name_as_per_whatsapp from birthdays where DAY=%s and MONTH=%s")
@@ -89,7 +89,7 @@ os.system("taskkill /f /im xampp-control.exe")
 mydb=mysql.connector.connect(
     host="localhost",
     user="##########",
-    password='##############'
+    passwd='##############'
     )
 myc=mydb.cursor()
 myc.execute("CREATE schema mydatabase")
@@ -100,7 +100,7 @@ myc.execute("CREATE schema mydatabase")
 mydb=mysql.connector.connect(
     host="localhost",
     user="########",
-    password='##############'
+    passwd='##############'
     database="mydatabase")
 myc=mydb.cursor()
 s='''Create table if not exists birthdays
@@ -118,7 +118,7 @@ myc.execute(s,multi=True)
 mydb=mysql.connector.connect(
     host="localhost",
     user="########",
-    password='##############'
+    passwd='##############'
     database="mydatabase")
 myc=mydb.cursor()
 #multi=True when multiple queries in s
