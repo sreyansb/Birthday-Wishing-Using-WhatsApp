@@ -87,7 +87,9 @@ os.system("taskkill /f /im xampp-control.exe")
 #To create a new schema
 mydb=mysql.connector.connect(
     host="localhost",
-    user="root")
+    user="##########",
+    password='##############'
+    )
 myc=mydb.cursor()
 myc.execute("CREATE schema mydatabase")
 """
