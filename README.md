@@ -9,3 +9,4 @@ Requirements:
  * chrome driver - can be downloaded from [https://chromedriver.chromium.org/downloads](here) based on your version of google chrome
  * runs on xampp - automatically opens it. I have configured my *xampp control* in such a way that it opens mysql port - **3306** automatically on start
  * other info in comments of the file.
+ * change the details according to your MySQL credentials for user, passwd.
