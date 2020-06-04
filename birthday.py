@@ -17,7 +17,9 @@ def sendwishes(x,event="Birthday"):
     driver.get('https://web.whatsapp.com/')
     try:
         #wait for max 10s
-        initi = WebDriverWait(driver, 200).until(EC.presence_of_element_located((By.CLASS_NAME, "C28xL")))
+        initi = WebDriverWait(driver, 200).until(
+        EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[3]/div/div[1]/div/label/div/div[2]")))
+        #initi = WebDriverWait(driver, 200).until(EC.presence_of_element_located((By.CLASS_NAME, "C28xL")))
         for target in x:
             print("Wishing",target,"on their",event)
             input_box_search=driver.find_element_by_xpath('/html/body/div[1]/div/div/div[3]/div/div[1]/div/label/div/div[2]')
