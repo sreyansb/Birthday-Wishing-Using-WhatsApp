@@ -4,14 +4,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import mysql.connector
+#import mysql.connector
 from datetime import datetime
 import os
 
 def sendwishes(x,event="Birthday"):
     PATH="C:\Program Files (x86)\chromedriver.exe"
     options = webdriver.ChromeOptions()
-    options.add_argument('--user-data-dir=C:/Users/sreya/yo/User_Data')
+    options.add_argument('--user-data-dir=C:/Users/sreyans/yo/User_Data')#add location to support cookies and session info
 
     driver = webdriver.Chrome(executable_path=PATH,options=options)
     driver.get('https://web.whatsapp.com/')
@@ -172,67 +172,3 @@ time.sleep(25)
 fn(curday,curmonth)
 os.system("taskkill /f /im xampp-control.exe")
 '''
-
-"""
-c=input("FIND EVENTS?")
-if c=='Y' or c=='y':
-    curday=input("DAY")
-    curmonth=input("MONTH")
-    fn(curday,curmonth)"""
-
-
-    
-""" 
-import mysql.connector
-#To create a new schema
-mydb=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    #passwd='##############'
-    )
-myc=mydb.cursor()
-myc.execute("CREATE schema mydatabase")
-"""
-"""
-#TO create a table within it
-#using the database/schema mydatabase
-import mysql.connector
-
-mydb=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    database="mydatabase")
-
-myc=mydb.cursor()
-s='''Create table anniversaries
-    (id int not null AUTO_INCREMENT PRIMARY KEY,
-     DAY int,
-     MONTH int check(MONTH>0 and MONTH<13),
-     Name_as_per_whatsapp varchar(100));
-     ALTER table birthdays AUTO_INCREMENT=1;'''
-#problems ho sakti hai idhar.multi hata dena->error aayega, waapas multi daal dena
-myc.execute(s,multi=True)
-myc.execute("SHOW TABLES")
-"""
-
-
-"""
-#inserting records within the table birthdays.
-#using the database/schema mydatabase
-import mysql.connector
-mydb=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    database="mydatabase")
-myc=mydb.cursor()
-#multi=True when multiple queries in s
-s='''Insert into anniversaries(DAY,MONTH,name_as_per_whatsapp) values
-    (5,2,"Minaxi Bothra"),
-    (5,2,"Sanjeev Bothra"),
-    (23,11,"Rohit Giya"),
-    (17,4,"Pankaj Giya"),
-    (17,4,"Preeti Giya")
-    ;'''
-myc.execute(s)#doesn't push a tuple into the table
-mydb.commit()#very important
-"""
