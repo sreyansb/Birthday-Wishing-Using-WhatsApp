@@ -1,7 +1,7 @@
 # WhatsApp-Automation
-WhatsApp automation using Selenium Python to wish people on their birthdays stored in a MySQL database.
+WhatsApp automation using Selenium Python to wish people on their birthdays stored in TSV(tab separated values) files.
 
-The file is **birthday.py** which automates WhatsApp Web using Selenium Python. Makes use of csv files to store the events(birthdays/anniversaries).
+The file is **birthday.py** which automates WhatsApp Web using Selenium Python. Makes use of tsv files to store the events(birthdays/anniversaries).
 
 Requirements:
  * Selenium for Python(pip install selenium)
