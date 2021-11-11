@@ -4,14 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import mysql.connector
 from datetime import datetime
 import os
 
 def sendwishes(x,event="Birthday"):
     PATH="C:\Program Files (x86)\chromedriver.exe"
     options = webdriver.ChromeOptions()
-    options.add_argument('--user-data-dir=C:/Users/sreya/yo/User_Data')
+    options.add_argument('--user-data-dir=C:/Users/sreyans/yo/User_Data')
 
     driver = webdriver.Chrome(executable_path=PATH,options=options)
     driver.get('https://web.whatsapp.com/')
@@ -29,8 +28,10 @@ def sendwishes(x,event="Birthday"):
             print("Target Successfully Selected")
             time.sleep(1)
             '''/html/body/div/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div[2]/div/div[1]/div/div[1]'''
-            inp_xpath = "/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[1]"
+            #inp_xpath = "/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div[2]/div/div[1]"
             #inp_xpath="/html/body/div/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div[2]/div/div[1]/div/div[1]"
+            #inp_xpath="/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/div/div[2]/div[1]"
+            inp_xpath="/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]"
             input_box = WebDriverWait(driver,20).until(EC.presence_of_element_located((
                 By.XPATH, inp_xpath)))
             print(input_box)
@@ -42,8 +43,8 @@ def sendwishes(x,event="Birthday"):
             time.sleep(3)
             print("Successfully Send Message to : "+ target + '\n')
             print("DONE")
-    except:
-        print()
+    except Exception as E:
+        print(E)
     finally:
         print("DONE all")
         #whenever qr code dena padega, usko driver.quit() nahi karke
@@ -53,7 +54,7 @@ def sendwishes(x,event="Birthday"):
 def fn(curday,curmonth):
     
     #print(curday,curmonth,type(curday))
-    f=open("C:/Users/sreya/Downloads/birthdays.tsv","r")
+    f=open("C:/Users/sreyans/Downloads/birthdays.tsv","r")
     s=f.readlines()
     f.close()
     s=s[1:]
@@ -69,7 +70,7 @@ def fn(curday,curmonth):
         print("NO birthday")
     time.sleep(1)
     
-    f=open("C:/Users/sreya/Downloads/anniversaries.tsv","r")
+    f=open("C:/Users/sreyans/Downloads/anniversaries.tsv","r")
     s=f.readlines()
     f.close()
     s=s[1:]
