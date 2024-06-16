@@ -13,11 +13,11 @@ ANNIVERSARY_GREETING = "Happy Anniversary!"
 CHROME_DRIVER_PATH = "<location of the chromedriver. Can be downloaded from https://chromedriver.chromium.org/downloads>"
 USER_DATA_DIRECTORY = "<data directory to store session data between multiple chrome sessions (so as to avoid scanning Whatsapp QR every time)>"
 WEB_DRIVER_STARTUP_TIME_IN_SECONDS = 200
-WHATSAPP_SEARCH_BAR_XPATH = "/html/body/div[1]/div/div/div[3]/div/div[1]/div/div/div[2]/div/div[1]"
+WHATSAPP_SEARCH_BAR_XPATH = "/html/body/div[1]/div/div/div[2]/div[3]/div/div[1]/div/div[2]/div[2]/div/div[1]/p"
 WHATSAPP_LOADING_TIME_IN_SECONDS = 20
 WHATSAPP_SEARCH_SANITY_DELAY_IN_SECONDS = 1
-WHATSAPP_CHAT_MESSAGE_BOX_XPATH = "/html/body/div[1]/div/div/div[4]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]"
-WHATSAPP_MESSAGE_PUBLISHING_DELAY_IN_SECONDS = 3
+WHATSAPP_CHAT_MESSAGE_BOX_XPATH = "/html/body/div[1]/div/div/div[2]/div[4]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p"
+WHATSAPP_MESSAGE_PUBLISHING_DELAY_IN_SECONDS = 6
 WHATSAPP_PER_CHAT_LOAD_TIME_IN_SECONDS=20
 WHATSAPP_PERSONAL_CHANNEL_NAME = "<your personal group / private channel to notify if nobody has an event on the current day>"
 
@@ -26,6 +26,7 @@ def wish_sender(people_and_event_tuples):
     PATH=CHROME_DRIVER_PATH
     options = webdriver.ChromeOptions()
     user_data_directory = f"--user-data-dir={USER_DATA_DIRECTORY}"
+    print(user_data_directory)
     options.add_argument(user_data_directory)
     driver = webdriver.Chrome(executable_path=PATH,options=options)
     driver.get('https://web.whatsapp.com/')
@@ -98,4 +99,3 @@ def orchestrate_wish_sending(current_day,current_month):
 current_day=(datetime.now().day)
 current_month=(datetime.now().month)
 orchestrate_wish_sending(current_day,current_month)
-
