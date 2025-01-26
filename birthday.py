@@ -13,10 +13,10 @@ ANNIVERSARY_GREETING = "Happy Anniversary!"
 CHROME_DRIVER_PATH = "<location of the chromedriver. Can be downloaded from https://chromedriver.chromium.org/downloads>"
 USER_DATA_DIRECTORY = "<data directory to store session data between multiple chrome sessions (so as to avoid scanning Whatsapp QR every time)>"
 WEB_DRIVER_STARTUP_TIME_IN_SECONDS = 200
-WHATSAPP_SEARCH_BAR_XPATH = "/html/body/div[1]/div/div/div[2]/div[3]/div/div[1]/div/div[2]/div[2]/div/div[1]/p"
+WHATSAPP_SEARCH_BAR_XPATH = "/html/body/div[1]/div/div/div[3]/div/div[3]/div/div[1]/div/div[2]/div[2]/div/div/p"
 WHATSAPP_LOADING_TIME_IN_SECONDS = 20
 WHATSAPP_SEARCH_SANITY_DELAY_IN_SECONDS = 1
-WHATSAPP_CHAT_MESSAGE_BOX_XPATH = "/html/body/div[1]/div/div/div[2]/div[4]/div/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p"
+WHATSAPP_CHAT_MESSAGE_BOX_XPATH = "/html/body/div[1]/div/div/div[3]/div/div[4]/div/footer/div[1]/div/span/div/div[2]/div[1]/div[2]/div[1]/p"
 WHATSAPP_MESSAGE_PUBLISHING_DELAY_IN_SECONDS = 6
 WHATSAPP_PER_CHAT_LOAD_TIME_IN_SECONDS=20
 WHATSAPP_PERSONAL_CHANNEL_NAME = "<your personal group / private channel to notify if nobody has an event on the current day>"
@@ -28,7 +28,7 @@ def wish_sender(people_and_event_tuples):
     user_data_directory = f"--user-data-dir={USER_DATA_DIRECTORY}"
     print(user_data_directory)
     options.add_argument(user_data_directory)
-    driver = webdriver.Chrome(executable_path=PATH,options=options)
+    driver = webdriver.Chrome(options=options, service=webdriver.ChromeService(executable_path=os.path.join(os.getcwd(), PATH)))
     driver.get('https://web.whatsapp.com/')
     
     try:
@@ -41,7 +41,7 @@ def wish_sender(people_and_event_tuples):
         for person_to_be_wished, wish in people_and_event_tuples:
             print(f"{person_to_be_wished} : {wish}")
 
-            whatsapp_search_box=driver.find_element_by_xpath(WHATSAPP_SEARCH_BAR_XPATH)
+            whatsapp_search_box=driver.find_element(by = By.XPATH, value = WHATSAPP_SEARCH_BAR_XPATH)
             time.sleep(WHATSAPP_SEARCH_SANITY_DELAY_IN_SECONDS)
             whatsapp_search_box.click()
             whatsapp_search_box.send_keys(person_to_be_wished,Keys.ENTER)
